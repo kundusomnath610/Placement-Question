@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ATM {
@@ -5,17 +6,35 @@ public class ATM {
     float Balance;
     int pin = 5678;
 
+//    public void checkPin() {
+//        System.out.println("Enter Your pin:");
+//        Scanner sc = new Scanner(System.in);
+//        int enteredPin = sc.nextInt();
+//
+//        if (enteredPin == pin) {
+//            menu();
+//        } else {
+//            System.out.println("Entered pin Wrong");
+//        }
+//    }
+
+
     public void checkPin() {
-        System.out.println("Enter Your pin:");
-        Scanner sc = new Scanner(System.in);
-        int enteredPin = sc.nextInt();
-        if (enteredPin == pin) {
-            menu();
-        }
-        else {
-            System.out.println("Entered pin Wrong");
+        try {
+            System.out.println("Enter Your pin:");
+            Scanner sc = new Scanner(System.in);
+            int enteredPin = sc.nextInt();
+
+            if (enteredPin == pin) {
+                menu();
+            } else {
+                System.out.println("Entered pin Wrong");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a valid Pin Only.");
         }
     }
+
 
     public void menu() {
         System.out.println("Enter your choice");
